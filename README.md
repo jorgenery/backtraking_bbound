@@ -6,7 +6,7 @@
 
 - [Sobre Backtracking](sobre_backtracking.md)
 
-- [Sobre Branch and Bound](sobre_branch_andbound.md)
+- [Sobre Branch and Bound](sobre_branch_and_bound.md)
 
 ## Licença
 
