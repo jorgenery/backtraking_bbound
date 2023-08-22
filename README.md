@@ -4,7 +4,7 @@
 
 - [Introdução](introdução.md)
 
-- [Sobre Backtracking](sobre_backtraking.md)
+- [Sobre Backtracking](sobre_backtracking.md)
 
 - [Sobre Branch and Bound](sobre_branch_andbound.md)
 
