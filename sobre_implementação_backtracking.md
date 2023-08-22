@@ -28,40 +28,39 @@ A função retorna True quando encontra uma solução válida para o tabuleiro o
 ### Algoritmo:
         back_traking_sodoku.py
 
-        def numero_valido(board, row, col, num):
-            for i in range(9):
-                if board[row][i] == num or board[i][col] == num:
-                    return False
-            return True        
-        
-        def is_valid(board, row, col, num):
+        # Valida condições do Sodoku
+        def numero_valido(tabuleiro, linha, coluna, valor):    
             # Verifica se o número não aparece na mesma linha, coluna ou subgrade
-            if not numero_valido(board, row, col, num):
-                return False
-            start_row, start_col = 3 * (row // 3), 3 * (col // 3)
-            for i in range(start_row, start_row + 3):
-                for j in range(start_col, start_col + 3):
-                    if board[i][j] == num:
+            for lc in range(9):
+                if tabuleiro[linha][lc] == valor or tabuleiro[lc][coluna] == valor:
+                    return False
+            # Verifica se já existe o numero no mesmo quadrante    
+            linha_inicial, coluna_inicial = 3 * (linha // 3), 3 * (coluna // 3)
+            for l in range(linha_inicial, linha_inicial + 3):
+                for c in range(coluna_inicial, coluna_inicial + 3):
+                    if tabuleiro[l][c] == valor:
                         return False
             return True
 
-        def find_empty_cell(board):
-            for i in range(9):
-                for j in range(9):
-                    if board[i][j] == 0:
-                        return i, j
-            return None      
+        # Pega a Proxima Posição Vazia
+        def pega_vazio(tabuleiro):
+            for l in range(9):
+                for c in range(9):
+                    if tabuleiro[l][c] == 0:
+                        return l, c
+            return None       
 
-        def solve_sudoku(board):
-            empty = find_empty_cell(board)
+        # Algoritmo backtracking que resolve o sodoku
+        def resolve_sudoku(tabuleiro):
+            empty = pega_vazio(tabuleiro)
             if not empty:
                 return True
-            row, col = empty
-            for num in range(1, 10):
-                if is_valid(board, row, col, num):
-                    board[row][col] = num
-                    if solve_sudoku(board):
+            linha, coluna = empty
+            for valor in range(1, 10):
+                if numero_valido(tabuleiro, linha, coluna, valor):
+                    tabuleiro[linha][coluna] = valor
+                    if resolve_sudoku(tabuleiro):
                         return True
-                    board[row][col] = 0
+                    tabuleiro[linha][coluna] = 0
             return False
 
