@@ -57,8 +57,6 @@ def main():
 - Jorge Santos Nery Filho 
 - Napoleão José Da Conceição Santana 
 - Wesley Silva das Virgens
-- Vitor Ferreira Trioschi Guerra
-- Juliana Maria Oliveira dos Santos
         """)
 
 if __name__ == "__main__":
